@@ -16,10 +16,13 @@ public class HelloController {
     PrimesService primerService;
 
     @GetMapping("/primes")
-    public String primes(@RequestParam int n, Model model) {
+    public String primes(@RequestParam int n, @RequestParam String nom, Model model) {
         List<Integer> primes = primerService.getPrimes(n);
+
         model.addAttribute("primes", primes);
-        return "primes";
+        model.addAttribute("nom", nom);
+
+        return "hello";
     }
 
     @GetMapping("/goodbye")
