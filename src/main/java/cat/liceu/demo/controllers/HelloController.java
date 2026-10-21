@@ -1,6 +1,6 @@
 package cat.liceu.demo.controllers;
 
-import cat.liceu.demo.Service.PrimesService;
+import cat.liceu.demo.service.PrimesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

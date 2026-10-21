@@ -1,4 +1,4 @@
-package cat.liceu.demo.Service;
+package cat.liceu.demo.service;
 
 import org.springframework.stereotype.Service;
 
