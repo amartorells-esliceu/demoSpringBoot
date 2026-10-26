@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 public class LoginController {
@@ -30,8 +31,15 @@ public class LoginController {
             session.setAttribute("username", username);
             return "redirect:/private";
         }
-
-        model.addAttribute("message", "Usuari o contrasenya incorrectes");
+        model.addAttribute("message", "User/pass incorrect");
         return "login";
+    }
+
+    @GetMapping("/private")
+    public String partPrivada(@SessionAttribute(required = false) String username) {
+        if (username == null) {
+            return "redirect:/login";
+        }
+        return "private";
     }
 }
