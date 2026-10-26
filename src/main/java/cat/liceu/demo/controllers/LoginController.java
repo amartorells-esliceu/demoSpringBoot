@@ -28,6 +28,7 @@ public class LoginController {
                             HttpSession session) {
 
         if (loginService.checkLogin(username, password)) {
+            System.out.printf("L'usuari %s ha iniciat sessió correctament.%n", username);
             session.setAttribute("username", username);
             return "redirect:/private";
         }
@@ -36,7 +37,9 @@ public class LoginController {
     }
 
     @GetMapping("/private")
-    public String partPrivada(@SessionAttribute(required = false) String username) {
+    public String partPrivada(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+
         if (username == null) {
             return "redirect:/login";
         }
